@@ -1,0 +1,392 @@
+﻿body {
+    margin-bottom: 60px;
+    background-color: #eaf3f8;
+    background-image: url('/data/SchedulingInfinityBg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.checked {
+  color: orange;
+}
+
+.fa-star {
+  cursor: pointer;
+}
+
+.half-checked {
+    color: transparent; /* Make the star text transparent to show background */
+    background: linear-gradient(to right, orange 50%, black 50%); /* Use gradient to display half checked star*/
+    /* Clip the gradient to the text */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/*Hero Section*/
+.hero_section {
+    width: 98.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    position: relative;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+    margin-bottom: 3vh;
+}
+
+.hero_left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero_left h2 {
+    margin: 0;
+    font-size: 2rem;
+    color: #00FFFF;
+}
+
+.hero_left h4 {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    color: #FFD700;
+}
+
+.hero_section a {
+    text-decoration: none; /* removes underline */
+    color: inherit; /* inherits color from parent (e.g., h4) */
+}
+
+.hero_image {
+    flex: 1;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+}
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+/*Override card-column style*/
+#productList.card-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 1.25rem;
+}
+
+#productList.card-columns .card{
+    flex: 0 0 calc(33.33% - 1rem);
+    box-sizing: border-box;
+}
+
+.card-columns .card:hover .card-img {
+    opacity: 1;
+    -webkit-transform-style: preserve-3d;
+}
+
+.card-columns .card-body {
+    height: 100px;
+    font-family: "Lora", serif;
+    background: #fbfafd;
+}
+
+.card-columns .card-img {
+  height: 330px;
+  vertical-align: bottom;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  opacity: .8;
+}
+
+.modal .card-img {
+  height: 500px;
+  vertical-align: bottom;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+
+.card-columns .card:hover {
+    transform: scale(1.05); /* Scale up the card */
+    box-shadow: 0 10px 20px rgba(37,33,82,.12), 0 4px 8px rgba(37,33,82,.06); /* Add shadow */
+}
+.card-footer {
+    background: #fbfafd;
+}
+
+/*Navbar Styling*/
+a.navbar-brand {
+    white-space: normal;
+    font-family: 'Yellowtail', cursive;
+    font-size: xx-large;
+    text-align: center;
+    word-break: break-all;
+}
+
+/*Navbar Link*/
+a.nav-link{
+    font-size: large;
+    font-weight: 500;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+   color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #9ce6ff;
+    border-color: #9ce6ff;
+}
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #ffd36b;
+        border-color: #ffd36b;
+    }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #eaf3f8;
+}
+p {
+    font-family: "Lora", serif;
+}
+h1 {
+    font-family: "Lora", serif;
+}
+ul {
+    font-family: "Lora", serif;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    font-family: "Lora", serif;
+}
+/*Backgrounds*/
+.bg-navbar {
+    background: -webkit-linear-gradient(110deg, #ADD8E6 60%, #FFDF96 60%);
+    background: -o-linear-gradient(110deg, #ADD8E6 60%, #FFDF96 60%);
+    background: -moz-linear-gradient(110deg, #ADD8E6 60%, #FFDF96 60%);
+    background: linear-gradient(110deg, #ADD8E6 60%, #FFDF96 60%);
+}
+.bg-footer {
+    background: -webkit-linear-gradient(110deg, #ADD8E6 60%, #FFDF96 60%);
+    background: -o-linear-gradient(110deg, #ADD8E6 60%, #FFDF96 60%);
+    background: -moz-linear-gradient(110deg, #ADD8E6 60%, #FFDF96 60%);
+    background: linear-gradient(110deg, #ADD8E6 60%, #FFDF96 60%);
+}
+.navbar-nav .nav-link.active {
+    color: #1E3A8A !important; /* Dark blue text */
+    font-weight: bold; /* Bold text */
+    transition: all 0.4s ease-in-out; /* Smooth transition for text effect */
+}
+
+    .navbar-nav .nav-link.active span {
+        display: inline-block; /* Allows transformation of the text */
+        animation: textPopUp 0.3s ease-in-out; /* Text-specific popup animation */
+    }
+
+/* Animation for the text popup effect */
+@keyframes textPopUp {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/* Light theme (default) */
+body {
+    transition: background-color 0.5s ease, color 0.5s ease;
+    background-color: #eaf3f8;
+    background-image: url('/data/SchedulingInfinityBg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Dark theme with background image */
+.dark-theme {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    background-image: url('/data/DarkThemeBg.png') !important; /* Replace this with your dark theme image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+    /* Other dark theme styles remain unchanged */
+    .dark-theme .navbar,
+    .dark-theme .footer,
+    .dark-theme .card,
+    .dark-theme .modal-content {
+        background-color: rgba(0, 0, 0, 0.6) !important;
+        color:black !important;
+    }
+
+    .dark-theme .card-body,
+    .dark-theme .card-footer,
+    .dark-theme .navbar-nav .nav-link,
+    .dark-theme .navbar-brand {
+        color: black !important;
+    }
+
+    .dark-theme .btn-primary {
+        background-color: #bb86fc !important;
+        border-color: #bb86fc !important;
+        color: #000 !important;
+    }
+
+    .dark-theme .nav-link.active {
+        color: black !important;
+    }
+
+.search-bar {
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.search-input {
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.3); /* Slight transparency */
+    color: #fff;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.filter-options-container {
+    display: inline-flex;
+    width: 100%;
+}
+
+.filter-button {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-top: 6px;
+}
+
+#myInput {
+    padding: 20px;
+    margin-top: -6px;
+    border: 0;
+    border-radius: 0;
+    background: #f1f1f1;
+}
+
+/* ==== MODAL DARK THEME OVERRIDES ==== */
+body.dark-theme .modal-content {
+    background-color: rgba(20, 20, 20, 0.95);
+    color: #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+body.dark-theme .modal-header,
+body.dark-theme .modal-footer {
+    background-color: rgba(30, 30, 30, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+}
+
+/* Card inside modal */
+body.dark-theme .modal .card {
+    background-color: transparent;
+    border: none;
+}
+
+body.dark-theme .modal .card-body {
+    background-color: transparent;
+    color: #e2e8f0;
+}
+
+/* Description text in modal */
+body.dark-theme .modal .card-text {
+    color: #d1d5db;
+}
+
+/* Star rating styling */
+body.dark-theme .modal-footer .fa-star {
+    color: #aaa;
+}
+
+    body.dark-theme .modal-footer .fa-star.checked {
+        color: #fbbf24;
+    }
+
+    body.dark-theme .modal-footer .fa-star.half-checked {
+        background: linear-gradient(to right, #fbbf24 50%, #555 50%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }

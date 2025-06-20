@@ -1,0 +1,177 @@
+﻿@page
+@model ContosoCrafts.WebSite.Pages.Schedule.UpdateScheduleModel
+
+@{
+    // Set the page title for the browser tab and layout
+    ViewData["Title"] = "Update Schedule";
+}
+
+<!-- Link to custom CSS file for styling the update schedule form -->
+<link rel="stylesheet" href="~/css/UpdateSchedule.css" />
+
+<!-- Bootstrap-styled container for centering and padding -->
+<div class="container mt-5">
+    <div class="card shadow-lg update-card">
+        <div class="card-body">
+            <h2 class="card-title mb-4">Update Schedule</h2>
+
+            <!-- Form to update an existing schedule item -->
+            <form method="post" id="updateForm">
+                <!-- Show validation errors if any -->
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Hidden field to store the product's ID -->
+                @Html.HiddenFor(x => x.Schedule.Id)
+
+                <!-- Name input field -->
+                <div class="mb-3">
+                    <label asp-for="Schedule.Name" class="form-label">Name</label>
+                    <input asp-for="Schedule.Name" class="form-control" oninput="validateForm()" />
+                    <span asp-validation-for="Schedule.Name" class="text-danger"></span>
+                    <!-- Custom error message shown if name validation fails -->
+                    <div id="nameError" class="text-danger" style="display:none;">Invalid name: only letters and spaces allowed.</div>
+                </div>
+
+                <!-- Trip Type -->
+                <div class="form-group" id="image-url-group">
+                    <label asp-for="Schedule.Triptype" class="control-label"></label>
+                    <button type="button" class="btn btn-outline-primary" id="add-triptype-btn">+</button>
+                    <input type="text" id="triptype-input" class="form-control" placeholder="Enter trip type and click + button" />
+
+                    <div id="triptype-tags" class="d-flex flex-wrap">
+                        @if (Model?.Schedule?.Triptype != null)
+                        {
+                            for (int i = 0; i < Model.Schedule.Triptype.Length; i++)
+                            {
+                                <div class="tag-name" data-value="@Model.Schedule.Triptype[i]">
+                                    @Model.Schedule.Triptype[i]
+                                    <button type="button" class="remove-tag ms-2" aria-label="Remove">×</button>
+                                    <input type="hidden" name="Schedule.Triptype" value="@Model.Schedule.Triptype[i]" />
+                                </div>
+                            }
+                        }
+                    </div>
+                    <span asp-validation-for="Schedule.Triptype" class="text-danger"></span>
+                </div>
+
+                <!-- Location input field -->
+                <div class="mb-3">
+                    <label asp-for="Schedule.Location" class="form-label">Location</label>
+                    <input asp-for="Schedule.Location" class="form-control" id="locationInput" />
+                    <span asp-validation-for="Schedule.Location" class="text-danger"></span>
+                    <!-- Custom error message shown if location validation fails -->
+                    <div id="locationError" class="text-danger" style="display:none;">Invalid location: only letters and spaces allowed.</div>
+                </div>
+
+                @* Website URL *@
+                <div class="form-group">
+                    <label asp-for="Schedule.WeatherUrl" class="control-label"></label>
+                    <input asp-for="Schedule.WeatherUrl" class="form-control" id="weatherUrl" name="Schedule.WeatherUrl" readonly />
+                    <input type="hidden" name="Schedule.WeatherUrl" id="weatherUrlHidden" />
+                    <span asp-validation-for="Schedule.WeatherUrl" class="text-danger"></span>
+                </div>
+
+                <!-- Description textarea field -->
+                <div class="mb-3">
+                    <label asp-for="Schedule.Description" class="form-label">Description</label>
+                    <textarea asp-for="Schedule.Description" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Schedule.Description" class="text-danger"></span>
+                </div>  
+
+                <!-- Image Url -->
+                <div class="form-group">
+                    <label asp-for="Schedule.Image" class="control-label"></label>
+                    <button type="button" class="btn btn-outline-primary" id="add-image-btn">+</button>
+                    <div id="image-inputs">
+                        @{
+                            var images = Model?.Schedule?.Image ?? Array.Empty<string>();
+                            var imageCount = Math.Max(images.Length, 1); // Always show at least one input
+                        }
+
+                        @for (int i = 0; i < imageCount; i++)
+                        {
+                            <div class="input-group mb-2">
+                                <input name="Schedule.Image" value="@(i < images.Length ? images[i] : "")" class="form-control" placeholder="Enter location image URL" />
+
+                                @if (i > 0)
+                                {
+                                    <button type="button" class="btn btn-outline-danger remove-image-btn">−</button>
+                                }
+                            </div>
+                        }
+                    </div>
+                    <span asp-validation-for="Schedule.Image" class="text-danger"></span>
+                </div>
+
+                <!-- Date Range -->
+                <div class="form-group">
+                    <input asp-for="DateRangeInput"
+                           id="DateRangeInput"
+                           class="form-control litepicker-input"
+                           placeholder="Select dates"
+                           readonly />
+
+                    <!-- Optional: custom JS error messages (from your Litepicker logic) -->
+                    <div id="dateRangeMessage" class="text-danger small mt-2 fw-semibold"></div>
+
+                    <!-- ASP.NET Core validation messages -->
+                    <span asp-validation-for="DateRangeInput" class="text-danger"></span>
+                    <span asp-validation-for="Schedule.DateRange.Start" class="text-danger"></span>
+                    <span asp-validation-for="Schedule.DateRange.End" class="text-danger"></span>
+                </div>
+
+                <!-- Action buttons: Cancel and Update -->
+                <div class="d-flex justify-content-between">
+                    <!-- Go back without saving -->
+                    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+                    <!-- Disabled by default; enabled only when inputs are valid -->
+                    <button type="submit" class="btn btn-success" id="updateButton" disabled>Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // document.getElementById('locationInput').addEventListener('input', async function () {
+        document.addEventListener("DOMContentLoaded", () => {
+            const validate = async () => {
+                const locationInput = document.querySelector('[name="Schedule.Location"]');
+                const locationError = document.getElementById("locationError");
+                const regex = /^[a-zA-Z\s.,-]+$/;
+                const isLocationValid = locationInput.value.trim() !== "" && regex.test(locationInput.value);
+                locationError.style.display = isLocationValid ? "none" : "block";
+                document.getElementById("updateButton").disabled = !isLocationValid;
+
+                const location = locationInput.value.trim();
+                if (!location) return;
+
+                try {
+                    const response = await fetch(`?handler=GenerateWeatherUrl&location=${encodeURIComponent(location)}`);
+                    if (response.ok) {
+                        const url = await response.text();
+                        document.getElementById('weatherUrl').value = url;
+                    }
+                } catch (err) {
+                    console.error('Error fetching weather URL:', err);
+                }
+
+            };
+
+            setInterval(validate, 500);
+
+        });
+    </script>
+
+    @* Function to validate Name and Location fields in real-time *@
+    <script src="~/js/validateSchedule.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+    <script src="~/js/DateRangeGenerator.js"></script>
+    <script src="~/js/ImageInputTextbox.js"></script>
+    <script src="~/js/HandleTripTypeInput.js"></script>
+}

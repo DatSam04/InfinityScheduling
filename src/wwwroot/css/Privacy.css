@@ -1,0 +1,60 @@
+/* ===== Section with image background ===== */
+
+.privacy-section {
+    padding: 100px 20px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Privacy Policy card */
+.privacy-container {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.3);
+    /*backdrop-filter: blur(10px);  Blur effect for transparency */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.9); /* Semi-transparent white text */
+}
+
+    /* Section headings */
+    .privacy-container h4 {
+        margin-top: 2rem;
+        font-size: 1.2rem;
+        color: #ffffff; /* White for contrast */
+    }
+
+    /* Paragraphs */
+    .privacy-container p {
+        margin-top: 1rem;
+        color: rgba(255, 255, 255, 0.8); /* Slightly less opaque for readability */
+    }
+
+/* First intro sentence */
+.intro {
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+/* Footer contact line */
+.contact-footer {
+    margin-top: 3rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    text-align: center;
+}
+
+    .contact-footer a {
+        color: rgba(144, 205, 244, 0.9); /* Light blue link */
+        text-decoration: none;
+    }
+
+        .contact-footer a:hover {
+            text-decoration: underline;
+        }

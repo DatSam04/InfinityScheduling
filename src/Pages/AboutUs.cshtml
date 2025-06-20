@@ -1,0 +1,74 @@
+﻿@page
+@model AboutUsModel
+@{
+	ViewData["Title"] = "About Us";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/AboutUs.css">
+    <link rel="stylesheet" href="~/css/site.css">
+</head>
+<body>
+    <!-- ===== Section with Gradient and Heading ===== -->
+    <section class="about-us-vibrant">
+        <div class="container">
+            <h1>Three Souls. One Vision. Endless Journeys.</h1>
+            <p class="subtitle">Shaping the unseen. Dreaming the impossible. Becoming the inevitable.</p>
+
+            <!-- ===== Team Cards Section ===== -->
+            <div class="team-cards">
+
+                <!-- Developer 1: Dat Sam -->
+                <div class="team-member fade-in" data-name="Dat Sam" data-role="Developer" data-message="Dat is passionate about turning ideas into reality, creating seamless digital journeys." data-email="bsam@seattleu.edu">
+                    <img src="~/data/Dat.jpeg" alt="Dat Sam">
+                    <h2>Dat Sam</h2>
+                    <p class="role">Developer</p>
+                    <p class="bio">Every adventure begins with a spark, transforming ideas into action.</p>
+                </div>
+
+                <!-- Developer 2: Jeffrey Li -->
+                <div class="team-member fade-in" data-name="Jeffrey Li" data-role="Developer" data-message="Jeffrey blends data and design to craft experiences that resonate." data-email=" jli17@seattleu.edu">
+                    <img src="~/data/Jeffrey.jpg" alt="Jeffrey Li">
+                    <h2>Jeffrey Li</h2>
+                    <p class="role">Developer</p>
+                    <p class="bio">Transforming concepts into adventures, one deliberate step at a time.</p>
+                </div>
+
+                <!-- Developer 3: Gayathri Poluri -->
+                <div class="team-member fade-in" data-name="Gayathri Poluri" data-role="Developer" data-message="Gayathri infuses every project with creativity and a touch of magic." data-email="spoluri1@seattleu.edu">
+                    <img src="~/data/gayathri.jpg" alt="Gayathri Poluri">
+                    <h2>Gayathri Poluri</h2>
+                    <p class="role">Developer</p>
+                    <p class="bio">Chasing ideas to make today's story tomorrow's solution.</p>
+                </div>
+            </div>
+
+			<!-- ===== Contact Us Section ===== -->
+            <div class="mission-text fade-in">
+                <p>
+                    We are dreamers and storytellers, not just developers. Our goal is to create lasting, inspiring, and connected digital experiences. Our goal is to make your journey one to remember with each line of code we produce. Come along with us as we create the future, one moment at a time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+	<!-- ===== Contact Modal ===== -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">×</span>
+            <h2 id="modalName"></h2>
+            <p id="modalRole"></p>
+            <p id="modalMessage"></p>
+            <p>Contact: <a id="modalEmail" href=""></a></p>
+        </div>
+    </div>
+
+    <script src="~/js/AboutUs.js"></script>
+</body>
+</html>

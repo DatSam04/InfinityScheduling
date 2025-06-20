@@ -1,0 +1,85 @@
+﻿/* Main card container with glassy white look */
+.schedule-card {
+    background: rgba(255, 255, 255, 0.85); /* translucent white */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+/* Title at top */
+.destination-title {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e40af;
+}
+
+/* Responsive image */
+.c-img {
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.5s ease;
+}
+
+/* Info section styles */
+.info-section {
+    font-size: 1rem;
+    color: #1e40af;
+    line-height: 1.6;
+}
+
+.location-text {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+/* Label text like "Location", "DateRange" */
+.label {
+    font-weight: 600;
+    color: #1e40af;
+    font-size: 1.05rem;
+}
+
+/* Description text styling */
+.description-text {
+    color: #444;
+    font-size: 1.02rem;
+}
+
+@media (max-width: 768px) {
+    .c-img {
+        height: 200px;
+    }
+
+    .destination-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* ==== DARK THEME: Glassy Card === */
+body.dark-theme .schedule-card {
+    background: rgba(0, 0, 0, 0.6); /* dark translucent glass */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Dark mode text color overrides */
+body.dark-theme .location-text,
+body.dark-theme .label,
+body.dark-theme .destination-title {
+    color: #f8fafc; /* Light text */
+}
+
+body.dark-theme .description-text {
+    color: #d1d5db; /* Light gray for description */
+}
+
+/* Carousel controls visibility fix */
+body.dark-theme .carousel-control-prev-icon,
+body.dark-theme .carousel-control-next-icon {
+    filter: invert(1);
+}

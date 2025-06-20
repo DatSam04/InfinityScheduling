@@ -1,0 +1,154 @@
+[
+  {
+    "Id": "maldives-2025",
+    "Name": "Maldives",
+    "img": [
+      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format\u0026fit=crop\u0026w=800\u0026q=80"
+    ],
+    "Location": "Maldives",
+    "WeatherUrl": "https://www.accuweather.com/en/mv/maldives-weather",
+    "DateRange": {
+      "Start": "2025-04-26",
+      "End": "2025-04-28"
+    },
+    "Description": "Relax in overwater bungalows and snorkel in crystal-clear waters of the Maldives.",
+    "Triptype": [
+      "beach",
+      "luxury"
+    ]
+  },
+  {
+    "Id": "bangkok-2025",
+    "Name": "Bangkok, Thailand",
+    "img": [
+      "https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format\u0026fit=crop\u0026w=800\u0026q=80"
+    ],
+    "Location": "Bangkok",
+    "WeatherUrl": "https://www.accuweather.com/en/th/bangkok/318849/weather-forecast/318849",
+    "DateRange": {
+      "Start": "2025-04-26",
+      "End": "2025-04-28"
+    },
+    "Description": "Explore bustling markets, ornate temples, and vibrant nightlife in Bangkok.",
+    "Triptype": [
+      "culture",
+      "culinary"
+    ]
+  },
+  {
+    "Id": "sydney-2025",
+    "Name": "Sydney, Australia",
+    "img": [
+      "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+      "https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress\u0026cs=tinysrgb\u0026dpr=1\u0026w=800"
+    ],
+    "Location": "Sydney",
+    "WeatherUrl": "https://www.accuweather.com/en/au/sydney/22889/weather-forecast/22889",
+    "DateRange": {
+      "Start": "2025-04-26",
+      "End": "2025-04-28"
+    },
+    "Description": "Visit the Sydney Opera House and surf at Bondi Beach in this iconic city.",
+    "Triptype": [
+      "culture",
+      "beach"
+    ]
+  },
+  {
+    "Id": "mauritius-2025",
+    "Name": "Mauritius",
+    "img": [
+      "https://images.pexels.com/photos/208590/pexels-photo-208590.jpeg?auto=compress\u0026cs=tinysrgb\u0026dpr=1\u0026w=800",
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format\u0026fit=crop\u0026w=800\u0026q=80"
+    ],
+    "Location": "Mauritius",
+    "WeatherUrl": "https://www.accuweather.com/en/mu/mauritius-weather",
+    "DateRange": {
+      "Start": "2025-04-26",
+      "End": "2025-04-28"
+    },
+    "Description": "Enjoy white-sand beaches and vibrant coral reefs in the tropical paradise of Mauritius.",
+    "Triptype": [
+      "beach",
+      "nature"
+    ]
+  },
+  {
+    "Id": "costarica-2025",
+    "Name": "Costa Rica",
+    "img": [
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+      "https://images.pexels.com/photos/1122414/pexels-photo-1122414.jpeg?auto=compress\u0026cs=tinysrgb\u0026dpr=1\u0026w=800"
+    ],
+    "Location": "Costa Rica",
+    "WeatherUrl": "https://www.accuweather.com/en/cr/costa-rica-weather",
+    "DateRange": {
+      "Start": "2025-04-26",
+      "End": "2025-04-28"
+    },
+    "Description": "Discover rainforests, zip-lining adventures, and eco-lodges in Costa Rica.",
+    "Triptype": [
+      "eco-tourism",
+      "adventure"
+    ]
+  },
+  {
+    "Id": "sanfrancisco-2025",
+    "Name": "San Francisco, USA",
+    "img": [
+      "https://images.pexels.com/photos/208745/pexels-photo-208745.jpeg?auto=compress\u0026cs=tinysrgb\u0026dpr=1\u0026w=800",
+      "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg?auto=compress\u0026cs=tinysrgb\u0026dpr=1\u0026w=800"
+    ],
+    "Location": "San Francisco",
+    "WeatherUrl": "https://www.accuweather.com/en/us/san-francisco/94103/weather-forecast/347629",
+    "DateRange": {
+      "Start": "2025-04-26",
+      "End": "2025-04-28"
+    },
+    "Description": "Explore the Golden Gate Bridge and tech culture in San Francisco.",
+    "Triptype": [
+      "culture",
+      "urban"
+    ]
+  },
+  {
+    "Id": "a56deb8a-2c9d-40ce-a233-bf8b9abe57aa",
+    "Name": "Redmond",
+    "img": [
+      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+      "https://images.pexels.com/photos/208590/pexels-photo-208590.jpeg"
+    ],
+    "Location": "Redmond",
+    "WeatherUrl": "https://www.accuweather.com/en/search-locations?query=Redmond",
+    "DateRange": {
+      "Start": "2025-06-01",
+      "End": "2025-06-05"
+    },
+    "Description": "Seattle12345431",
+    "Triptype": [
+      "fun"
+    ]
+  },
+  {
+    "Id": "ba57f9ae-8674-43ee-870f-4378590f47b8",
+    "Name": "testteatea",
+    "img": [
+      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+      "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+    ],
+    "Location": "California",
+    "WeatherUrl": "https://www.accuweather.com/en/search-locations?query=California",
+    "DateRange": {
+      "Start": "2025-06-12",
+      "End": "2025-06-14"
+    },
+    "Description": "test4312",
+    "Triptype": [
+      "test",
+      "fun"
+    ]
+  }
+]

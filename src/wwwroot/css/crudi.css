@@ -1,0 +1,188 @@
+/* Page background with soft gradient */
+.create-section {
+    padding: 60px 20px;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+    /* Form Card with background image + white overlay */
+    .create-section .container {
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 40px;
+        border-radius: 20px;
+        background: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 8px 20px rgba(0, 0, 0, 0.08), 0 12px 32px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px); /* for Safari support */
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+
+        /* Hover glow effect */
+        .create-section .container:hover {
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+        }
+
+    /* Heading style */
+    .create-section h1 {
+        text-align: center;
+        color: #1e3a8a;
+        font-size: 2rem;
+        margin-bottom: 30px;
+        font-family: 'Georgia', serif;
+    }
+
+/* Form labels */
+.form-group label {
+    font-weight: 600;
+    color: #fefefe;
+    display: block;
+    margin-bottom: 6px;
+    width: min-content;
+    background-color: #0c5460;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 6px;
+}
+
+/* Input field styling */
+.form-control {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+    .form-control:focus {
+        border-color: #0d6efd;
+        outline: none;
+        box-shadow: 0 0 0 0.1rem rgba(13, 110, 253, 0.25);
+    }
+
+/* Validation error text */
+.text-danger {
+    font-size: 0.85rem;
+    color: #dc3545;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    margin-top: 15px;
+    margin-right: 10px;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+body {
+    background-color: #eef6fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+
+/* Product Card Styling */
+.product-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+/* Make sure image wraps correctly */
+.card-image-wrapper {
+    overflow: hidden;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+}
+
+/* Full Width Image */
+.product-image-full {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Card Content */
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #212529;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+}
+
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+    .btn-danger:hover {
+        background-color: #bb2d3b;
+    }
+
+/*Styling for update page*/
+#UpdatePageContainer {
+    background: linear-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0.15)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 8px 20px rgba(0, 0, 0, 0.08), 0 12px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+#UpdateProductTitle {
+    color: #1e3a8a;
+}

@@ -1,0 +1,74 @@
+@page
+@model ContosoCrafts.WebSite.Pages.Product.IndexModel
+
+@{
+    ViewData["Title"] = "Index page"; // Set the browser tab title
+}
+
+<!-- Link to external CSS file for custom styling -->
+<link rel="stylesheet" href="~/css/ProductPage.css">
+
+<!-- Main Container -->
+<div class="container dashboard-container">
+
+    <!-- Header with Title and Create Button -->
+    <div class="dashboard-header">
+        <!-- Dashboard title -->
+        <h1 class="dashboard-title">Product Dashboard</h1>
+
+        <!-- Button to navigate to Create page -->
+        <a asp-page="Create" class="btn btn-info create-button">+ Create New</a>
+    </div>
+
+    <!-- Search Filter Bar -->
+    <div class="search-bar">
+        <!-- Input field for real-time product filtering -->
+        <input type="text"
+               class="form-control search-input"
+               placeholder="Search products..."
+               id="productFilterBar">
+    </div>
+
+    <!-- Product Cards Grid -->
+    <div class="product-grid" id="productGrid">
+
+        <!-- Loop through each product and render a card -->
+        @foreach (var product in Model.Products)
+        {
+            <div class="product-card-container">
+                <!-- Individual product card -->
+                <div class="card product-card">
+
+                    <!-- Card Content -->
+                    <div class="card-body card-content">
+                        <!-- Product title -->
+                        <h5 class="card-title product-title">@product.Title</h5>
+
+                        <!-- Shortened product description -->
+                        <p class="card-text product-description">@product.Description?.Substring(0, Math.Min(product.Description.Length, 100))...</p>
+
+                        <!-- Action Buttons: Read, Update, Delete -->
+                        <div class="action-buttons">
+                            <!-- Navigate to product read page -->
+                            <a asp-page="Read" asp-route-id="@product.Id" class="btn btn-info read-button">Read</a>
+
+                            <!-- Navigate to product update page -->
+                            <a asp-page="Update" asp-route-id="@product.Id" asp-route-returnUrl="/Product/Index" class="btn btn-warning update-button">Update</a>
+
+                            <!-- Navigate to product delete page -->
+                            <a asp-page="Delete" asp-route-id="@product.Id" asp-route-returnUrl="/Product/Index" class="btn btn-danger delete-button">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div> <!-- End of Product Grid -->
+</div> <!-- End of Container -->
+<!-- In case of No results found in Filter -->
+<div id="noResultsMessage" class="no-results">
+    No products found. Click <a asp-page="Create">here</a> to add one.
+</div>
+
+<!-- JavaScript for search functionality (filters products as user types) -->
+<script src="~/js/ProductFilterBar.js?v=1.0.1"></script>

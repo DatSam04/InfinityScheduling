@@ -1,0 +1,296 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Set base font and background color for the entire page */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f7f9fc;
+}
+/* ======= About Us Section ======= */
+
+/* Large vibrant header section with gradient background and centered white text */
+.about-us-vibrant {
+    padding: 100px 20px;
+    background: rgba(255, 255, 255, 0.6); /* soft white transparent */
+    backdrop-filter: blur(8px); /* glass effect */
+    color: #1e293b; /* dark text */
+    text-align: center;
+    border-radius: 20px;
+    margin: 2rem auto;
+}
+
+
+/* Contain page content and center it with a max width */
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/* Main heading styling */
+.about-us-vibrant h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: navy;
+}
+
+/* Subtitle under the heading */
+.subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: blue; 
+    margin-bottom: 48px;
+}
+
+/* ======= Team Section ======= */
+
+/* Flex layout for team cards - row by default */
+.team-cards {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: nowrap;
+}
+
+/* Individual team member card */
+.team-member {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 360px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+    /* Lift card slightly on hover for interactivity */
+    .team-member:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Circular profile image */
+    .team-member img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 16px;
+    }
+
+    /* Team member name */
+    .team-member h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1e293b; /* medium gray-blue */
+        margin-bottom: 8px;
+    }
+
+    .team-member .role {
+        font-size: 1rem;
+        color: #64748b;
+        margin-bottom: 12px;
+    }
+    /* Team member's short bio */
+    .team-member .bio {
+        font-size: 0.95rem;
+        color: #475569; /* dark gray-blue */
+        line-height: 1.6;
+    }
+
+/* ======= Mission Statement ======= */
+.mission-text {
+    margin-top: 64px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: blue;
+    font-weight: bold;
+    line-height: 1.8;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ======= Modal Styling ======= */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* semi-transparent black */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal content styling */
+.modal-content {
+    background: #ffffff; /* white background */
+    padding: 32px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* soft shadow */
+}
+
+/* Close button for the modal */
+.close-button {
+    position: absolute; /* position it in the top right corner */
+    top: 16px;
+    right: 16px;
+    font-size: 24px;
+    color: #64748b; /* gray-blue */
+    cursor: pointer;
+    transition: color 0.2s; /* smooth color transition */
+}
+
+    /* Change color on hover */
+    .close-button:hover {
+        color: #1e293b; /* darker gray-blue */
+    }
+
+/* Modal title and paragraph styling */
+.modal-content h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1e293b; /* medium gray-blue */
+    margin-bottom: 16px;
+}
+
+
+/* Modal paragraph */
+.modal-content p {
+    font-size: 1rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* Modal links */
+.modal-content a {
+    color: #3b82f6; /* blue */
+    text-decoration: none;
+    font-weight: 600;
+}
+
+    /* Change color on hover */
+    .modal-content a:hover {
+        text-decoration: underline;
+    }
+
+/* ======= Fade-in Animation ======= */
+.fade-in {
+    opacity: 0; /* Start invisible */
+    transform: translateY(24px); /* Start slightly lower */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+}
+
+    /* When the element is visible, fade in and slide up */
+    .fade-in.visible {
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* Slide to original position */
+    }
+
+
+/* ======= Responsive Styling ======= */
+
+/* For screens smaller than 768px */
+@media (max-width: 767px) {
+    .about-us-vibrant h1 { 
+        font-size: 2.25rem; 
+    }
+    /* Subtitle font size */
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    /* Team cards layout */
+    .team-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+    /* Team member card */
+    .team-member {
+        max-width: 100%;
+    }
+    /* Team member name font size */
+    .mission-text {
+        font-size: 1rem;
+    }
+}
+/* For screens larger than 768px */
+@media (min-width: 768px) {
+    .team-cards {
+        flex-wrap: nowrap; /* Keep cards in a single row */
+    }
+
+    /* Team member card */
+    .team-member {
+        flex: 1;
+        max-width: 360px;
+    }
+}
+/* DARK THEME STYLING */
+body.dark-theme .modal-content {
+    background-color: rgba(0, 0, 0, 0.85); /* dark background */
+    color: #f8f9fa; /* light text */
+    border: 1.5px solid rgba(255, 255, 255, 0.25); /* soft white border */
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.05); /* optional glow */
+}
+
+    body.dark-theme .modal-content h2,
+    body.dark-theme .modal-content p {
+        color: #f1f1f1;
+    }
+
+    body.dark-theme .modal-content a {
+        color: #90cdf4; /* soft blue */
+    }
+
+        body.dark-theme .modal-content a:hover {
+            color: #63b3ed;
+            text-decoration: underline;
+        }
+
+body.dark-theme .close-button {
+    color: #cbd5e0;
+}
+
+/* ==== DARK THEME: About Us Section ==== */
+body.dark-theme .about-us-vibrant {
+    background: rgba(0, 0, 0, 0.6); /* dark translucent overlay */
+    color: #f1f5f9; /* light text */
+}
+
+    body.dark-theme .about-us-vibrant h1 {
+        color: #e2e8f0;
+    }
+
+body.dark-theme .subtitle {
+    color: #cbd5e1;
+}
+
+body.dark-theme .team-member {
+    background: rgba(255, 255, 255, 0.05); /* subtle transparent card */
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px); /* glass effect */
+}
+
+    body.dark-theme .team-member h2,
+    body.dark-theme .team-member .role,
+    body.dark-theme .team-member .bio {
+        color: #f1f5f9;
+    }
+
+body.dark-theme .mission-text {
+    color: #e0e7ff;
+}

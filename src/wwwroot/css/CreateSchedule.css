@@ -1,0 +1,80 @@
+﻿/* Tag styling for trip types or other labels */
+.tag-name {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e9f5ff;
+    color: #0077cc;
+    border: 1px solid #b3d8ff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 4px;
+    font-size: 0.9rem;
+}
+
+/* Close ('x') button for removable tags */
+.remove-tag {
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: #0077cc;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+/* Plus buttons to add new trip types or images */
+#add-triptype-btn,
+#add-image-btn {
+    font-size: 24px;
+    padding: 2px 8px;
+    margin-bottom: 8px;
+    border: none;
+    border-radius: 25px;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+    /* Remove default focus styles for plus buttons */
+    #add-triptype-btn:focus,
+    #add-image-btn:focus {
+        outline: none;
+        border: none;
+        background: none;
+        box-shadow: none;
+    }
+
+    /* Hover effect for add buttons */
+    #add-triptype-btn:hover,
+    #add-image-btn:hover {
+        color: cornflowerblue;
+        transform: scale(1.25);
+    }
+
+/* Small delete button used with image previews */
+.remove-image-btn {
+    height: 30px;
+    padding: 2px 8px;
+    margin: 2px 0 0 2px;
+}
+
+/* Main form layout with two-column structure */
+#create-form-body {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Input width adjustments for layout consistency */
+.left input,
+.right input {
+    width: 450px;
+}
+
+#image-inputs {
+    width: 450px;
+}
+
+/* Space between left and right form columns */
+.right {
+    margin-left: 150px;
+}

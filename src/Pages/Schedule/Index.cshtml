@@ -1,0 +1,97 @@
+﻿@page
+@model ContosoCrafts.WebSite.Pages.Schedule.IndexModel
+@{
+    Layout = "_Layout"; 
+	ViewData["Title"] = "Schedule Page";
+    var scheduleList = Model.Schedules.ToList();
+}
+
+
+<!-- Bootstrap 5 CSS for layout and design -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--Bootstrap For Icons-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Bootstrap 5 JS bundle for interactive components (like modals) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom CSS specifically for the destination/schedule section -->
+<link rel="stylesheet" href="~/css/schedule.css">
+
+<!-- Section containing all travel destination content -->
+<section class="weather-section">
+    <div class="container position-relative">
+        <a asp-page="CreateSchedule" class="btn btn-primary add_btn">Create</a>
+        <!-- Main heading for the destinations section -->
+        <h1 class="top-heading">Destinations</h1>
+
+        <!-- Travel quote displayed in the top-right corner -->
+        <div class="position-absolute top-0 end-0 mt-2 me-3 text-white text-end" id="TravelQuote">
+            <p class="small fst-italic mb-0">"Take only memories, leave only footprints"</p>
+            <p class="small fst-italic text-white-50 mb-0">~ Seattle Chief</p>
+        </div>
+
+        <!-- Empty row that will be dynamically populated with destination cards via JavaScript -->
+        <div class="row" id="cardContainer">
+            @for (int i = 0; i < scheduleList.Count; i++)
+            {
+                var schedule = scheduleList[i];
+                var carouselId = $"carousel-{i}";
+                var images = schedule.Image;
+                <div class="col-md-4">
+                    <div class="destination-card">
+                        <div id="@carouselId" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @for (int idx = 0; idx < images.Length; idx++)
+                                {
+                                    var img = images[idx];
+                                    var isActive = idx == 0 ? "active" : "";
+                                    <div class="carousel-item @isActive">
+                                        <img src="@img" class="d-block w-100" alt="@schedule.Name image @(idx + 1)">
+                                    </div>
+                                }
+                            </div>
+
+                            <!-- Previous slide button -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#@carouselId" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+
+                            <!-- Next slide button -->
+                            <button class="carousel-control-next" type="button" data-bs-target="#@carouselId" data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
+                        </div>
+
+                        <!-- Card body with title and description -->
+                        <div class="card-body">
+                            <h5 class="card-title" onclick="window.open('@schedule.WeatherUrl', '_blank')">@schedule.Name</h5>
+                            <p class="Date_Range">📅@schedule.DateRange.Start.ToString("MM/dd/yyyy") - @schedule.DateRange.End.ToString("MM/dd/yyyy")</p>
+                            <div class="d-flex justify-content-end">
+                                <!-- Delete Schedule -->
+                                <a href="/Schedule/DeleteSchedule?name=@Uri.EscapeDataString(schedule.Name)"
+                                   class="text-danger fs-6 me-3"
+                                   title="Delete this destination">
+                                    <i class="bi bi-trash-fill"></i>
+                                </a>
+
+                                <!-- Read Schedule -->
+                                <a asp-page="ReadSchedule" asp-route-id="@schedule.Id"
+                                   class="text-primary fs-6 me-3"
+                                   title="Read this destination">
+                                    <i class="bi bi-book-fill"></i>
+                                </a>
+
+                                <!-- Update Schedule -->
+                                <a href="/Schedule/UpdateSchedule?id=@schedule.Id"
+                                   class="text-success fs-6 me-3"
+                                   title="Update this destination">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

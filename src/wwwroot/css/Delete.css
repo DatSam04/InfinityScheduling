@@ -1,0 +1,218 @@
+/* Page container styling */
+.delete-container {
+    max-width: 700px;
+    margin: 60px auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Page heading style */
+.page-heading {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #dc3545; /* Bootstrap danger color */
+    margin-bottom: 30px;
+}
+
+/* Group spacing */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Action button group alignment */
+.form-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Cancel Button Styling */
+.cancel-btn {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .cancel-btn:hover {
+        background-color: #5a6268;
+    }
+
+/* Delete Button Styling */
+.delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .delete-btn:hover {
+        background-color: #c82333;
+    }
+
+/* Modal styling */
+.delete-modal {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Modal header style */
+.modal-header-delete {
+    background-color: #dc3545;
+    color: white;
+    border-bottom: none;
+}
+
+/* Small helper text */
+.form-text {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 8px;
+}
+
+/* Base container styling */
+.delete-container {
+    max-width: 700px;
+    margin: 60px auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Dark theme override */
+body.dark-theme .delete-container {
+    background: rgba(0, 0, 0, 0.6);
+    color: #f8f9fa;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Page heading style */
+.page-heading {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #dc3545;
+    margin-bottom: 30px;
+}
+
+/* Group spacing */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+}
+
+body.dark-theme .form-label {
+    color: #e5e7eb;
+}
+
+/* Inputs */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode input field */
+body.dark-theme .form-control {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f8f9fa;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+    body.dark-theme .form-control::placeholder {
+        color: #aaa;
+    }
+
+/* Action buttons */
+.form-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Cancel Button */
+.cancel-btn {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .cancel-btn:hover {
+        background-color: #5a6268;
+    }
+
+/* Delete Button */
+.delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .delete-btn:hover {
+        background-color: #c82333;
+    }
+
+/* MODAL DARK THEME STYLES */
+
+body.dark-theme .modal-content.delete-modal {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Modal header */
+body.dark-theme .modal-header-delete {
+    background-color: #dc3545;
+    color: #ffffff;
+    border-bottom: none;
+}
+
+body.dark-theme .modal-title {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Input field in modal */
+body.dark-theme .modal-content .form-control {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+}
+
+body.dark-theme .modal-content p {
+    color: #adb5bd !important; /* ash color */
+}
+
+    body.dark-theme .modal-content .form-control::placeholder {
+        color: #cbd5e1;
+    }
+
+/* Small text (helper below input) */
+body.dark-theme .modal-content .form-text {
+    color: #d1d5db;
+}

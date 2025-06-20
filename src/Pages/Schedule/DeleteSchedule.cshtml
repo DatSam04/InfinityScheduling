@@ -1,0 +1,57 @@
+@page
+@model ContosoCrafts.WebSite.Pages.Schedule.DeleteScheduleModel
+
+@{
+    // Set the browser tab title
+    ViewData["Title"] = "Delete Confirmation";
+}
+<!--Link to external css file-->
+<link rel="stylesheet" href="~/css/DeleteSchedule.css" />
+
+<!-- Main container for the delete confirmation card -->
+<div class="container del-schedule-container" id="DelSheduleContainer">
+
+    <!-- Header section -->
+    <div class="header-section">
+        <h4 class="header-title">Confirm Deletion</h4>
+    </div>
+
+    <!-- Card body section -->
+    <div class="card-body">
+
+        <!-- Instructional text -->
+        <p class ="instruction-text">
+            Please type <strong>@Model.DestinationName</strong> to confirm deletion of this destination.
+        </p>
+
+        <!-- Deletion confirmation form -->
+        <form method="post">
+            <!-- Hidden field to carry the destination name -->
+            <input type="hidden" asp-for="DestinationName" />
+
+            <!-- User input to confirm name match -->
+            <div class="input-group">
+                <input type="text" name="ConfirmationText" class="form-control" placeholder="Type destination title here" required />
+                
+            </div>
+            <small class="text-muted">This prevents accidental deletions.</small>
+
+            <!-- Optional alert message, shown when TempData has a message (like 'Coming Soon') -->
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert-message" id="AlertMsg">
+                    @TempData["Message"]
+                </div>
+            }
+
+            <!-- Action buttons: Cancel and Confirm -->
+            <div class="button-group">
+                <!-- Cancel button routes back to index -->
+                <a asp-page="Index" class="btn btn-secondary cancel-button">Cancel</a>
+
+                <!-- Submit button triggers POST to check confirmation and show message -->
+                <button type="submit" class="btn btn-danger confirm-button">Yes, Delete</button>
+            </div>
+        </form>
+    </div>
+</div>

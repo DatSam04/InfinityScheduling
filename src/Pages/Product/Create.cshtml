@@ -1,0 +1,58 @@
+﻿@page
+@using ContosoCrafts.WebSite.Services
+@inject JsonFileProductService ProductService
+@model ContosoCrafts.WebSite.Pages.Product.CreateModel
+@{
+	ViewData["Title"] = "Create Page";
+}
+<!-- Link to the external stylesheet that gives form its theme -->
+<link rel="stylesheet" href="~/css/Crudi.css">
+
+
+<!-- Main wrapper section with soft gradient and peachy beach background -->
+<section class="create-section">
+<div class="container">
+	<form method="post">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <!--Title-->
+            <h1>Create</h1>
+        <div class="form-group">
+            <label asp-for="Product.Title" class="control-label"></label>
+            <input asp-for="Product.Title" class="form-control" placeholder="Enter location title" />
+            <span asp-validation-for="Product.Title" class="text-danger"></span>
+        </div>
+
+        <!--Location-->
+        <div class="form-group">
+            <label asp-for="Product.Description" class="control-label"></label>
+            <input asp-for="Product.Description" class="form-control" placeholder="Enter location description" />
+            <span asp-validation-for="Product.Description" class="text-danger"></span>
+        </div>
+        
+        <!--Location Website of the Image-->
+        <div class="form-group">
+            <label asp-for="Product.Url" class="control-label"></label>
+            <input asp-for="Product.Url" type="url" class="form-control" placeholder="Enter location website URL" />
+            <span asp-validation-for="Product.Url" class="text-danger"></span>
+        </div>
+
+        <!--Location Image URL-->
+        <div class="form-group">
+            <label asp-for="Product.Image" class="control-label"></label>
+            <input asp-for="Product.Image" type="url" class="form-control" placeholder="Enter location image URL" />
+            <span asp-validation-for="Product.Image" class="text-danger"></span>
+        </div>
+
+        <!--Submit Button-->
+        <a asp-page="/Product/Index" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Create</button>
+	</form>
+</div>
+</section>
+
+@section Scripts {
+    @* This partial enables client-side validation via unobtrusive scripts *@
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

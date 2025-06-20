@@ -1,0 +1,223 @@
+@using System.Collections.Specialized
+@using ContosoCrafts.WebSite.Models
+@using ContosoCrafts.WebSite.Services
+@using Microsoft.AspNetCore.Components.Web
+@inject JsonFileProductService ProductService
+
+<div class="hero_section">
+    <div class="hero_left">
+        <h2>Best Place to Visit</h2>
+        <h4><a href="@heroProduct.Url">@heroProduct.Title</a></h4>
+    </div>
+    <div class="hero_image" style="background-image: url('@heroProduct.Image')"></div>
+</div>
+
+<script src="js/ProductFilterBar.js"></script>
+<div class="container filter-options-container">
+    <!-- Dropdown Filter List -->
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle filter-button" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Filter By
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#" @onclick="SetFilterAlphabetical">A-Z</a></li>
+            <li><a class="dropdown-item" href="#" @onclick="SetFilterAlphabeticalDescending">Z-A</a></li>
+            <li><a class="dropdown-item" href="#" @onclick="SetFilterMaker">Maker</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="card-columns" id="productList">
+    @if (FilterBy == "alphabetical descending") 
+    {
+        @foreach (var product in ProductService.GetProducts().OrderByDescending(x => x.Title).ToList())
+        {
+            <div class="card">
+                <div class="card-img" style="background-image: url('@product.Image');">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@product.Title</h5>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted"><button @onclick="(e => SelectProduct(product.Id))" id="MoreInfoButton_@product.Id"
+                                                      data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-primary">More Info</button>
+                    </small>
+                </div>
+            </div>
+        }
+    } else if (FilterBy == "alphabetical") {
+        @foreach (var product in ProductService.GetProducts().OrderBy(x => x.Title).ToList())
+        {
+            <div class="card">
+                <div class="card-img" style="background-image: url('@product.Image');">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@product.Title</h5>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted"><button @onclick="(e => SelectProduct(product.Id))" id="MoreInfoButton_@product.Id"
+                                                      data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-primary">More Info</button>
+                    </small>
+                </div>
+            </div>
+        }
+    } else {
+        @foreach (var product in ProductService.GetProducts().OrderBy(x => x.Maker).ToList())
+        {
+            <div class="card">
+                <div class="card-img" style="background-image: url('@product.Image');">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@product.Title</h5>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted"><button @onclick="(e => SelectProduct(product.Id))" id="MoreInfoButton_@product.Id"
+                                                      data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-primary">More Info</button>
+                    </small>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            @if(selectedProduct != null)
+            {
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productTitle">@selectedProduct.Title</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('@selectedProduct.Image');">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@selectedProduct.Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @for(int i=1; i<6; i++)
+                    {
+                        var currentStar = i;
+                        if(i<=Math.Floor(averageRating))
+                        {
+                            <span class="fa fa-star checked" @onclick="(e => SubmitRating(currentStar))"></span>
+                        }
+                        else if (i - averageRating <= 0.5)
+                        {
+                            <span class="fa fa-star half-checked" @onclick="(e => SubmitRating(currentStar))"></span>
+                        }
+                        else
+                        {
+                            <span class="fa fa-star" @onclick="(e => SubmitRating(currentStar))"></span>
+                        }
+                    }
+                    @if(voteCount == 0)
+                    {
+                        <span>Be the first to vote!</span>
+                    }
+                    else
+                    {
+                        <span>@averageRating out of 5</span>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--Assigning Values to each product-->
+@code 
+{
+    ProductModel heroProduct;
+
+    protected override void OnInitialized()
+    {
+        GetProducts();
+    }
+
+    ProductModel selectedProduct;
+    // Product id
+    string selectedProductId;
+    
+    void GetProducts()
+    {
+        var products = ProductService.GetProducts().ToList();
+
+        if(products.Count > 0)
+        {
+            var random = new Random();
+            int index = random.Next(products.Count);
+            heroProduct = products[index];
+        }
+    }
+    
+    /// <summary>
+    /// This method is called when the component is initialized
+    /// </summary>
+    void SelectProduct(string productId)
+    {
+        selectedProductId = productId;
+        selectedProduct = ProductService.GetProducts().First(x => x.Id == productId);
+        GetCurrentRating();
+    }
+
+    /// This method is called when the component is disposed
+    int voteCount = 0;
+    double averageRating = 0;
+    string voteLabel;
+    private string FilterBy = "alphabetical";
+
+    /// <summary>
+    /// This method is called to get the current rating of the selected product
+    /// </summary>
+    void GetCurrentRating()
+    {
+        if(selectedProduct.Ratings == null)
+        {
+            averageRating = 0;
+            voteCount = 0;
+        }
+        else
+        {
+            voteCount = selectedProduct.Ratings.Count();
+            voteLabel = voteCount > 1 ? "Votes" : "Vote";
+            averageRating = Math.Round((double)selectedProduct.Ratings.Sum() / voteCount, 1);
+        }
+
+        System.Console.WriteLine($"Current rating for {selectedProduct.Id}: {averageRating}");
+    }
+
+	/// <summary>
+	/// This method is called to submit a rating for the selected product
+	/// </summary> 
+    void SubmitRating(int rating)
+    {
+        System.Console.WriteLine($"Rating received for {selectedProduct.Id}: {rating}");
+        ProductService.AddRating(selectedProductId, rating);
+        SelectProduct(selectedProductId);
+    }
+
+    void SetFilterAlphabetical()
+    {
+        FilterBy = "alphabetical";
+    }
+
+    void SetFilterAlphabeticalDescending()
+    {
+        FilterBy = "alphabetical descending";
+    }
+    
+    void SetFilterMaker()
+    {
+        FilterBy = "maker";
+    }
+}

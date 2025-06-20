@@ -1,0 +1,46 @@
+@page "{id}"
+@using ContosoCrafts.WebSite.Services
+@inject JsonFileProductService ProductService
+@model ContosoCrafts.WebSite.Pages.Product.ReadModel
+
+@{
+    ViewData["Title"] = "Read page"; // Sets the browser tab title
+}
+
+<!-- Link to the custom CSS file for styling this page -->
+<link rel="stylesheet" href="~/css/Crudi.css">
+
+<div class="container mt-5">
+
+    <!-- Back button to navigate to the product list page -->
+    <a asp-page="/Product/Index" class="btn btn-primary">&larr; Back</a>
+
+    <!-- Main product card container -->
+    <div class="product-card">
+
+        <!-- Wrapper for the image to apply rounded corners properly -->
+        <div class="card-image-wrapper">
+            <img src='@Model.Product.Image' alt='Image for @Model.Product.Title' class="product-image-full" />
+        </div>
+
+        <!-- Text content section of the card -->
+        <div class="card-body">
+
+            <!-- Product title shown in bold -->
+            <h3 class="card-title fw-bold text-start">@Model.Product.Title</h3>
+
+            <!-- Product description paragraph -->
+            <p class="card-text text-start">@Model.Product.Description</p>
+
+            <!-- Buttons to update or delete this product -->
+            <div class="d-flex gap-2 mt-3">
+                <!-- Update button navigates to the update page with product ID -->
+                <a asp-page="Update" asp-route-id="@Model.Product.Id" asp-route-returnUrl="/Product/Read/@Model.Product.Id" class="btn btn-primary">Update</a>
+
+                <!-- Delete button navigates to the delete page with product ID -->
+                <a asp-page="Delete" asp-route-id="@Model.Product.Id" asp-route-returnUrl="/Product/Read/@Model.Product.Id" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+

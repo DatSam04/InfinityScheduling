@@ -1,0 +1,60 @@
+﻿@page "{id}"
+@using ContosoCrafts.WebSite.Services
+@inject JsonFileScheduleService ScheduleService
+@model ContosoCrafts.WebSite.Pages.Schedule.ReadScheduleModel
+@{
+    ViewData["Title"] = "Read Page";
+    var schedule = Model.Schedule;
+    var images = schedule.Image;
+}
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="~/css/ReadSchedule.css" />
+
+<div class="container mt-4">
+    <a asp-page="/Schedule/Index" class="btn btn-outline-primary mb-3">&larr; Back</a>
+
+    <div class="card schedule-card p-4 shadow-lg rounded-4">
+        <div class="row align-items-start g-4">
+            <!-- Carousel Section -->
+            <div class="col-md-5">
+                <div id="destinationCarousel" class="carousel slide carousel-fade rounded-4 overflow-hidden" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @for (int i = 0; i < images.Count(); i++)
+                        {
+                            <div class="carousel-item @(i == 0 ? "active" : "")">
+                                <img src="@images[i]" class="d-block w-100 c-img" alt="Image @(i + 1)">
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Optional Carousel Controls -->
+                    @if (images.Count() > 1)
+                    {
+                        <button class="carousel-control-prev" type="button" data-bs-target="#destinationCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#destinationCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    }
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="col-md-7 info-section">
+                <p class="location-text">@schedule.Location</p>
+
+                <p>
+                    <span class="label">Description:</span><br />
+                    <span class="description-text">@schedule.Description</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

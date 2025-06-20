@@ -1,0 +1,80 @@
+﻿@page "{id}"
+@using ContosoCrafts.WebSite.Services
+@inject JsonFileProductService ProductService
+@model ContosoCrafts.WebSite.Pages.Product.UpdateModel
+
+@{
+	ViewData["Title"] = "Update page";
+}
+
+
+<!-- Link to the external stylesheet that gives form its theme -->
+<link rel="stylesheet" href="~/css/Crudi.css">
+
+<!-- Main wrapper section with soft gradient and peachy beach background -->
+
+    <!-- Form container with background image, blur effect, and rounded design -->
+    <div class="container" id="UpdatePageContainer">
+
+        <!-- Page heading displaying the product/location name -->
+        <h1 class="text-center mb-4" id="UpdateProductTitle">
+            Update @Model.Product.Title
+        </h1>
+
+        <!-- Start of the form that posts updates -->
+        <form method="post">
+
+            <!-- Show validation errors if any -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Hidden field to store the product's ID -->
+            @Html.HiddenFor(x => x.Product.Id)
+
+            <!-- ===== Input: Title ===== -->
+            <div class="form-group">
+                <label asp-for="Product.Title" class="control-label"></label>
+                <input asp-for="Product.Title" class="form-control" placeholder="Enter Location Name" />
+                <span asp-validation-for="Product.Title" class="text-danger"></span>
+            </div>
+
+            <!-- ===== Input: Description ===== -->
+            <div class="form-group">
+                <label asp-for="Product.Description" class="control-label"></label>
+                <input asp-for="Product.Description" class="form-control" placeholder="Enter a description regarding the location" />
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
+            </div>
+
+            <!-- ===== Input: Website URL ===== -->
+            <div class="form-group">
+                <label asp-for="Product.Url" class="control-label"></label>
+                <input asp-for="Product.Url" class="form-control" placeholder="Enter the Website Url relating to the location" />
+                <span asp-validation-for="Product.Url" class="text-danger"></span>
+            </div>
+
+            <!-- ===== Input: Image URL ===== -->
+            <div class="form-group">
+                <label asp-for="Product.Image" class="control-label"></label>
+                <input asp-for="Product.Image" class="form-control" placeholder="Enter a valid Url for the image of the location" />
+                <span asp-validation-for="Product.Image" class="text-danger"></span>
+            </div>
+
+            <!-- ===== Buttons: Cancel + Save ===== -->
+            <div class="form-group text-center">
+                <!-- Redirect back without saving -->
+                <a href="@Model.ReturnUrl" class="btn btn-secondary">Cancel</a>
+
+                <!-- Submit the form to save updates -->
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+
+<!-- Load client-side validation scripts -->
+@section Scripts {
+    @* This partial enables client-side validation via unobtrusive scripts *@
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

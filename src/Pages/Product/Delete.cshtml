@@ -1,0 +1,110 @@
+﻿@page "{id}"
+@using ContosoCrafts.WebSite.Services
+@inject JsonFileProductService ProductService
+@model ContosoCrafts.WebSite.Pages.Product.DeleteModel
+@{
+	ViewData["Title"] = "Delete page";
+}
+
+<!-- ================================ -->
+<!-- Delete Page with Modal Confirmation -->
+<!-- ================================ -->
+<!-- Link to custom CSS file -->
+<link rel="stylesheet" href="~/css/Delete.css">
+<!-- ================================ -->
+<!-- Delete Page with Modal Confirmation -->
+<!-- ================================ -->
+<!-- Link to custom CSS file -->
+<link rel="stylesheet" href="~/css/Delete.css">
+
+<section class="delete-section">
+    <div class="container delete-container">
+
+        <!-- Page Heading -->
+        <h1 class="page-heading">Delete Destination</h1>
+
+        <!-- Deletion form -->
+        <form method="post">
+            <!-- Validation summary to show model errors -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Hidden field to keep product Id -->
+            @Html.HiddenFor(x => x.Product.Id)
+
+            <!-- Display Destination Title (read-only) -->
+            <div class="form-group">
+                <label asp-for="Product.Title" class="form-label">Title</label>
+                <input asp-for="Product.Title" class="form-control" disabled />
+            </div>
+
+            <!-- Display Description (read-only) -->
+            <div class="form-group">
+                <label asp-for="Product.Description" class="form-label">Description</label>
+                <input asp-for="Product.Description" class="form-control" disabled />
+            </div>
+
+            <!-- Display URL (read-only) -->
+            <div class="form-group">
+                <label asp-for="Product.Url" class="form-label">URL</label>
+                <input asp-for="Product.Url" class="form-control" disabled />
+            </div>
+
+            <!-- Display Image URL (read-only) -->
+            <div class="form-group">
+                <label asp-for="Product.Image" class="form-label">Image</label>
+                <input asp-for="Product.Image" class="form-control" disabled />
+            </div>
+
+            <!-- Button to trigger modal -->
+            <div class="form-actions">
+                <a href="@Model.ReturnUrl" class="btn cancel-btn">Cancel</a>
+                <button type="button" class="btn delete-btn" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                    Delete
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Bootstrap Modal for Delete Confirmation -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content delete-modal">
+            <div class="modal-header modal-header-delete">
+                <h5 class="modal-title" id="confirmDeleteLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Please type <strong>"@Model.Product.Title"</strong> to confirm deletion of this destination.</p>
+                <input type="text" id="confirmationInput" class="form-control" placeholder="Type destination title here" />
+                <small class="form-text">This prevents accidental deletions.</small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
+                <form method="post">
+                    @Html.HiddenFor(x => x.Product.Id)
+                    <button id="finalDeleteBtn" type="submit" class="btn delete-btn" disabled>Yes, Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const confirmInput = document.getElementById("confirmationInput");
+            const deleteBtn = document.getElementById("finalDeleteBtn");
+            const expected = "@Model.Product.Title";
+
+            confirmInput.addEventListener("input", function () {
+                deleteBtn.disabled = confirmInput.value.trim() !== expected;
+            });
+        });
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

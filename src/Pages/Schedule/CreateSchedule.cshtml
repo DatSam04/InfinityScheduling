@@ -1,0 +1,141 @@
+﻿@page
+@using ContosoCrafts.WebSite.Services
+@inject JsonFileScheduleService ScheduleService
+@model ContosoCrafts.WebSite.Pages.Schedule.CreateScheduleModel
+@{
+	ViewData["Title"] = "Create Page";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
+<link rel="stylesheet" href="~/css/CreateSchedule.css" />
+
+<h1>Create</h1>
+
+<div class="container">
+	<form method="post" id="create-schedule-form">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		@Html.HiddenFor(x => x.Schedule.Id)
+		<div id="create-form-body">
+			<div class="left">
+				<!-- Name -->
+				<div class="form-group">
+					<label asp-for="Schedule.Name" class="control-label"></label>
+					<input asp-for="Schedule.Name" class="form-control" placeholder="Enter schedule name" />
+					<span asp-validation-for="Schedule.Name" class="text-danger"></span>
+				</div>
+
+				<!-- Location -->
+				<div class="form-group">
+					<label asp-for="Schedule.Location" class="control-label"></label>
+					<input asp-for="Schedule.Location" class="form-control" id="locationInput" placeholder="Enter location you will visit" />
+					<span asp-validation-for="Schedule.Location" class="text-danger"></span>
+				</div>
+
+				<!-- Description -->
+				<div class="form-group">
+					<label asp-for="Schedule.Description" class="control-label"></label>
+					<input asp-for="Schedule.Description" class="form-control" placeholder="Enter schedule description" />
+					<span asp-validation-for="Schedule.Description" class="text-danger"></span>
+				</div>
+
+				<!-- Trip Type -->
+				<div class="form-group" id="image-url-group">
+					<label asp-for="Schedule.Triptype" class="control-label"></label>
+					<button type="button" class="btn btn-outline-primary" id="add-triptype-btn">+</button>
+					<input type="text" id="triptype-input" class="form-control" placeholder="Enter trip type and click + button" />
+				
+					<div id="triptype-tags" class="d-flex flex-wrap">
+						@if (Model?.Schedule?.Triptype != null)
+						{
+							for (int i = 0; i < Model.Schedule.Triptype.Length; i++)
+							{
+								<div class="tag-name" data-value="@Model.Schedule.Triptype[i]">
+									@Model.Schedule.Triptype[i]
+									<button type="button" class="remove-tag ms-2" aria-label="Remove">×</button>
+									<input type="hidden" name="Schedule.Triptype" value="@Model.Schedule.Triptype[i]" />
+								</div>
+							}
+						}
+					</div>
+					<span asp-validation-for="Schedule.Triptype" class="text-danger"></span>
+				</div>
+			</div>
+
+			<div class="right">
+				<!-- Weather URL -->
+				<div class="form-group">
+					<label asp-for="Schedule.WeatherUrl" class="control-label"></label>
+					<input asp-for="Schedule.WeatherUrl" class="form-control" id="weatherUrl" readonly />
+					<span asp-validation-for="Schedule.WeatherUrl" class="text-danger"></span>
+				</div>
+
+				<!-- Image Url -->
+				<div class="form-group">
+					<label asp-for="Schedule.Image" class="control-label"></label>
+					<button type="button" class="btn btn-outline-primary" id="add-image-btn">+</button>
+					<div id="image-inputs">
+						@{
+							var images = Model?.Schedule?.Image ?? Array.Empty<string>();
+							var imageCount = Math.Max(images.Length, 1); // Always show at least one input
+						}
+					
+						@for (int i = 0; i < imageCount; i++)
+						{
+							<div class="input-group mb-2">
+								<input name="Schedule.Image" value="@(i < images.Length ? images[i] : "")" class="form-control" placeholder="Enter location image URL" />
+
+								@if (i > 0)
+								{
+									<button type="button" class="btn btn-outline-danger remove-image-btn">−</button>
+								}
+							</div>
+						}
+					</div>
+					<span asp-validation-for="Schedule.Image" class="text-danger"></span>
+				</div>
+
+				<!-- Date Range -->
+				<div class="form-group">
+					<input asp-for="DateRangeInput"
+						   id="DateRangeInput"
+						   class="form-control litepicker-input"
+						   placeholder="Select dates"
+						   readonly />
+
+					<!-- Optional: custom JS error messages (from your Litepicker logic) -->
+					<div id="dateRangeMessage" class="text-danger small mt-2 fw-semibold"></div>
+
+					<!-- ASP.NET Core validation messages -->
+					<span asp-validation-for="DateRangeInput" class="text-danger"></span>
+					<span asp-validation-for="Schedule.DateRange.Start" class="text-danger"></span>
+					<span asp-validation-for="Schedule.DateRange.End" class="text-danger"></span>
+				</div>
+			</div>
+		</div>
+
+		<!--Submit Button-->
+		<a asp-page="/Schedule/Index" class="btn btn-secondary">Cancel</a>
+		<button type="submit" class="btn btn-primary">Create</button>
+	</form>
+</div>
+
+@section Scripts {
+	<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+	<script src="~/js/DateRangeGenerator.js"></script>
+	<script src="~/js/ImageInputTextbox.js"></script>
+	<script src="~/js/HandleTripTypeInput.js" ></script>
+
+	@* Generate Website URL *@
+	<script>
+		document.getElementById('locationInput').addEventListener('input', async function () {
+			const location = this.value;
+			if (location.trim().length === 0) return;
+
+			const response = await fetch(`/Schedule/CreateSchedule?handler=GenerateWeatherUrl&location=${encodeURIComponent(location)}`);
+			if (response.ok) {
+				const url = await response.text();
+				document.getElementById('weatherUrl').value = url;
+			}
+		});
+	</script>
+}

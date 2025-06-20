@@ -1,0 +1,76 @@
+﻿@page
+@model PrivacyModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy – Scheduling Infinity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/Privacy.css">
+</head>
+<body>
+
+    <!-- ===== Privacy Policy Section with its own background ===== -->
+    <section class="privacy-section">
+
+        <div class="privacy-container">
+            @{
+                ViewData["Title"] = "Privacy Policy";
+            }
+            <h1>@ViewData["Title"]</h1>
+
+            <p class="intro"><strong>Your privacy isn’t a feature — it’s a promise.</strong></p> 
+
+            <p>
+                At <strong>Scheduling Infinity</strong>, we don’t collect your data, we don’t track your actions,
+                and we never compromise your trust. You are in control — always.
+            </p>
+
+            <p>
+                We know how it feels to wonder what a website is doing behind the scenes. That’s why we keep it simple:
+                <strong>No personal data, no logins, no cookies, no trackers.</strong>
+            </p>
+
+            <h4>No Personal Data</h4>  <!-- ===== No Personal Data ===== -->
+            <p>
+                We don’t ask for your name, email, or any other personal info. What you see on your screen stays on your screen.
+            </p>
+
+            <h4>No Cookies or Tracking</h4>  <!-- ===== No cookies or Tracking Systems ===== -->
+            <p>
+                We don’t place cookies or run any tracking scripts. If you’re ever prompted to accept cookies here — deny it. It’s not from us.
+            </p>
+
+            <h4>Clear Sources</h4>  <!-- ===== Clear Sources ===== -->
+            <p>
+                Some info (like destination images or descriptions) may come from third-party sources. We always link back so you know exactly where it’s from.
+            </p>
+
+            <h4>Built With Intention</h4>  <!-- ===== Created for Purpose and Responsibility ===== -->
+            <p>
+                We made this platform with honesty, empathy, and care. We don’t watch you. We don’t follow you.
+                We’re just here to help you plan something beautiful — privately.
+            </p>
+
+            <h4>If Anything Changes, You’ll Know</h4>  <!-- ===== If anything Changes We will Let uh know ===== -->
+            <p>
+                If we ever update this policy, we’ll tell you clearly. No fine print. No confusion.
+            </p>
+
+            <h4>Thank You for Being Here</h4>  <!-- ===== Thanks Section ===== -->
+            <p>
+                Your trust means everything to us. We built Scheduling Infinity for people like you — explorers, dreamers, and planners who deserve safety and respect.
+            </p>
+
+            <!-- ===== Contact Us Section ===== -->
+            <h5 class="contact-footer"> 
+                Still have questions or feedback?
+                <a href="mailto:jli17@seattleu.edu"><strong>Contact us</strong></a>.
+            </h5>
+        </div>
+    </section>
+
+</body>
+</html>
