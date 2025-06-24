@@ -51,8 +51,24 @@
                 <p class="location-text">@schedule.Location</p>
 
                 <p>
-                    <span class="label">Description:</span><br />
+                    <span class="label">Description</span><br />
                     <span class="description-text">@schedule.Description</span>
+                </p>
+
+                <p>
+                    <span class="label">Trip Type</span>
+                    <br>
+                    @foreach (var type in Model.Schedule.Triptype)
+                    {
+                        <span class="description-text">@type&nbsp;&nbsp;</span>
+                    }
+                </p>
+
+                <p>
+                    <span class="label">DateRange</span>
+                    <br>
+                    <span class="description-text">@Model.Schedule.DateRange.Start.ToString("MM/dd/yyyy") &nbsp; - &nbsp;</span>
+                    <span class="description-text">@Model.Schedule.DateRange.End.ToString("MM/dd/yyyy")</span>
                 </p>
             </div>
         </div>
