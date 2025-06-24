@@ -130,25 +130,5 @@
     "Triptype": [
       "fun"
     ]
-  },
-  {
-    "Id": "ba57f9ae-8674-43ee-870f-4378590f47b8",
-    "Name": "testteatea",
-    "img": [
-      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-      "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-    ],
-    "Location": "California",
-    "WeatherUrl": "https://www.accuweather.com/en/search-locations?query=California",
-    "DateRange": {
-      "Start": "2025-06-12",
-      "End": "2025-06-14"
-    },
-    "Description": "test4312",
-    "Triptype": [
-      "test",
-      "fun"
-    ]
   }
 ]
