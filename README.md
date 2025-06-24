@@ -1,15 +1,7 @@
-# ContosoCrafts
+# Infinity Scheduling
 
-## Tutorial
+## About
+Infinity Scheduling is a group project of a CS course. We build a simple product that allows users to add a location and create a schedule with it. Infinity Scheduling will automatically generate url to the weather forecast website for the location you add to the schedule.
 
-- [ASP.NET Tutorial](https://dotnet.microsoft.com/learn/aspnet/hello-world-tutorial/intro)
-
-## Gists
-
-- [Gist](https://gist.github.com/bradygaster/3d1fcf43d1d1e73ea5d6c1b5aab40130) referenced in the videos
-
-## YouTube Playlist
-
-- [ASP.NET Core 101](https://www.youtube.com/playlist?list=PLdo4fOcmZ0oW8nviYduHq7bmKode-p8Wy)
-
-13 part series
+## Source
+Infinity Scheduling is built on top of the ContosoCraft codebase
